@@ -153,8 +153,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
-
+    // Using .join method to return all items in the args array joined together
+    return args.join('');
     // YOUR CODE ABOVE HERE //
 }
 
@@ -169,6 +169,15 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    // creating an if statement that tests which string is longer
+    if (stringOne.length > stringTwo.length){
+        return stringOne;
+    } else if (stringTwo.length > stringOne.length){
+        return stringTwo;
+    } else {
+        return 'These stringss are the same length';
+    }
+
 
 
 

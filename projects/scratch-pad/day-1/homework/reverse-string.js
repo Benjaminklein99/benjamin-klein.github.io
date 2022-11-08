@@ -21,9 +21,15 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
+       // using the .split() method to enter input string into an array
+       var argArray = input.split('');
+       // unsing the .reverse() method to reverse the order of the array
+       argArray.reverse();
+       // using the .join() method to join the reversed array into a string
+       newString = argArray.join('');
+       // returning result
+       return newString;
+
     
     // YOUR CODE GOES ABOVE HERE //
 }

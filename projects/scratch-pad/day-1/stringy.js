@@ -193,7 +193,20 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+        // putting input argument into an array
+        var arg = Array.from(arguments);
+        // alphabetizing the array
+        arg.sort();
+        // creating an if statement that evaluates the alphabetical order of the inputs and returns a number representative of ascending or decending order
+        if (stringOne === stringTwo){
+            return 0;
+        } else if (stringOne === arg[0]){
+            return 1;
+        } else if (stringTwo === arg[0]) {
+            return -1;
+        } else {
+            return 0;
+        }
 
 
     // YOUR CODE ABOVE HERE //
@@ -209,10 +222,22 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
-
+       // putting input argument into an array
+       var arg = Array.from(arguments);
+       // alphabetizing the array
+       arg.sort();
+       // creating an if statement that evaluates the alphabetical order of the inputs and returns a number representative of ascending or decending order
+       if (stringOne === stringTwo){
+           return 0;
+       } else if (stringOne === arg[0]){
+           return -1;
+       } else if (stringTwo === arg[0]) {
+           return 1;
+       } else {
+           return 0;
+       }
+   
+ 
     // YOUR CODE ABOVE HERE //
 }
 

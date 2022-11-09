@@ -35,8 +35,27 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // creating an if statement that will evaluate if the time is before 12
+    if (hour > 0 && hour <= 11){
+        // if true return good morning
+        return 'Good Morning!';
+    // evaluate if time is between 12 and 16
+    } else if (hour > 11 && hour <= 16){
+        // if true return good afternoon
+        return 'Good Afternoon!';
+    // evaluate if time is between 16 amd 21
+    } else if (hour > 16 && hour <= 21){
+        // if true return good evening
+        return 'Good Evening!';
+    //evaluate if time is between 21 and 24
+    } else if (hour > 21 && hour <= 24){
+        // if true return good night
+        return 'Good Night!';
+    // anything else entered
+    } else {
+        // returns error message
+        return 'Invalid time. Try again.';
+    }
     
     
     // YOUR CODE ABOVE HERE //

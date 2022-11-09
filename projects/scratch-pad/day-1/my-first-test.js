@@ -17,7 +17,8 @@
  */
 function print(value) {
   // YOUR CODE BELOW HERE //
-  
+  // logging imput value to the console
+  console.log(value)
   
   
   // YOUR CODE ABOVE HERE //

@@ -15,7 +15,7 @@
 function length(string) {
     // YOUR CODE BELOW HERE //
     // using .length property to test the length of the string//
-    return string.lenght;
+    return string.length;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -60,9 +60,9 @@ function toDashCase(string) {
     // Starting by initializing a variable called new string and setting it equal to the lower case version of the input string
     var newString = string.toLowerCase();
     // Changeing spaces to dashes
-    newString.replace(' ', '-');
+    var answer = newString.replace(' ', '-');
     // Returning new string
-    return newString;
+    return answer;
 
     // YOUR CODE ABOVE HERE //
 }

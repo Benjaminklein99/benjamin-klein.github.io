@@ -26,7 +26,7 @@ function reverseString(input) {
        // unsing the .reverse() method to reverse the order of the array
        argArray.reverse();
        // using the .join() method to join the reversed array into a string
-       newString = argArray.join('');
+       var newString = argArray.join('');
        // returning result
        return newString;
 

@@ -12,10 +12,11 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  // starting at the 0th index, loop over the array until there aren't amymore items
+  for (var i = 0; i < array.length; i++){
+    //console log the value at the index
+    console.log(array[i]);
+}
   // YOUR CODE ABOVE HERE //
 }
 
@@ -25,7 +26,11 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
+  // starting at the end of the array (at the index of length -1) loop backwards through the array until the 0th index is reached
+  for (var i = array.length - 1; i >= 0; i--){
+    // console log the value at the index
+    console.log(array[i]);
+  } 
   
   
   

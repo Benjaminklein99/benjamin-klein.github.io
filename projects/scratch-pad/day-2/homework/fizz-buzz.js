@@ -12,9 +12,17 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
-
-
+       // creating a foor loop that will loop over numbers 1 through 100 
+       for (var i = 1; i <= 100; i++){
+        //creating an if else chain that will evaluate if the index is a multiple of 3 or 5
+        if (i % 3 == 0){
+          console.log('Fizz'); 
+        } else if (i % 5 == 0){
+          console.log('Buzz');
+        } else {
+        console.log(i);
+        }
+      }
     // YOUR CODE GOES ABOVE HERE //
 }
 

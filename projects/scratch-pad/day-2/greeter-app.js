@@ -36,25 +36,25 @@
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
     // creating an if statement that will evaluate if the time is before 12
-    if (hour > 0 && hour <= 11){
+    if (hour >= 0 && hour <= 11){
         // if true return good morning
-        return 'Good Morning!';
+        console.log('Good Morning!');
     // evaluate if time is between 12 and 16
     } else if (hour > 11 && hour <= 16){
         // if true return good afternoon
-        return 'Good Afternoon!';
+        console.log('Good Afternoon!');
     // evaluate if time is between 16 amd 21
     } else if (hour > 16 && hour <= 21){
         // if true return good evening
-        return 'Good Evening!';
+        console.log('Good Evening!');
     //evaluate if time is between 21 and 24
     } else if (hour > 21 && hour <= 24){
         // if true return good night
-        return 'Good Night!';
+        console.log('Good Night!');
     // anything else entered
     } else {
         // returns error message
-        return 'Invalid time. Try again.';
+        console.log('Invalid time. Try again.');
     }
     
     

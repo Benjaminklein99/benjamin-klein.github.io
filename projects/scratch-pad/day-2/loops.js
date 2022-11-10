@@ -91,9 +91,14 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  // 
-  
-  
+  // looping over the keys in object
+  for (var key in object){
+    // logging the values to the console
+    console.log(object[key]);
+    }
+    
+    
+
   // YOUR CODE ABOVE HERE //
 }
 
@@ -102,8 +107,15 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
-  
+  // creating a variable to store the count of keys in object
+  var count = 0
+  // Looping over each key in object
+  for (var key in object){
+    // Incrementing count by 1
+    count++;
+  }
+  // returning the count
+  return count
   
   
   // YOUR CODE ABOVE HERE //

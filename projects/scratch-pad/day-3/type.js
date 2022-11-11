@@ -14,7 +14,8 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    // using Array.isArray method to determine if the entered value is an array
+    return Array.isArray(value)
     
     
     
@@ -31,7 +32,11 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (typeof value === 'object' && !Array.isArray(value)){
+        return 'true';
+    } else {
+        return 'false';
+    };
     
     
     

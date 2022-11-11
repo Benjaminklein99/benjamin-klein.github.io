@@ -15,7 +15,7 @@
 function isArray(value) {
     // YOUR CODE BELOW HERE //
     // using Array.isArray method to determine if the entered value is an array
-    return Array.isArray(value)
+    return Array.isArray(value);
     
     
     
@@ -32,10 +32,20 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    if (typeof value === 'object' && !Array.isArray(value)){
-        return 'true';
+    // if value is an objct
+    if (typeof value === 'object' &&
+    // is not an array 
+    !Array.isArray(value) &&
+    // is not null 
+    value !== null &&
+    // is not a date 
+    value instanceof Date === false){
+        //return true
+        return true;
+    //otherwise
     } else {
-        return 'false';
+        //return false
+        return false;
     };
     
     
@@ -51,7 +61,15 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    //if value is an object or array  isn't null.      and is not Date
+    if (typeof value === 'object' && value !== null && value instanceof Date === false){
+        //return true
+        return true;
+    // otherwise
+    } else {
+        // return false
+        return false;
+    };
     
     
     
@@ -79,8 +97,25 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    if (typeof value === 'string'){
+        return 'string';
+    } else if (Array.isArray(value) === true){
+        return 'array';
+    } else if (typeof value === 'object' && !Array.isArray(value) && value !== null & value instanceof Date === false){
+        return 'object'; 
+    } else if (typeof value === 'undefined'){
+        return 'undefined';
+    } else if (typeof value === 'number'){
+        return 'number';
+    } else if (typeof value === 'boolean'){
+        return 'boolean';
+    } else if ( value === null){
+        return 'null';
+    } else if (typeof value === 'function'){
+        return 'function';
+    } else if (value instanceof Date === true){
+        return 'date';
+    };
     
     
     // YOUR CODE ABOVE HERE //

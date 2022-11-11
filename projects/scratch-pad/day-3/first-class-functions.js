@@ -14,10 +14,10 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     return function(value){
-        if (value > base){
-            return 'greater';
-        } else {
-            return 'not greater';
+        if (typeof value === typeof base && value > base){
+            return 'value is greater than base';
+        } else if (typeof value === typeof base && value < base){
+            return 'base is greater than value';
         };
     };
     

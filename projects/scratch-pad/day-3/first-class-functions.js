@@ -15,9 +15,9 @@ function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     return function(value){
         if (typeof value === typeof base && value > base){
-            return 'value is greater than base';
+            return true;
         } else if (typeof value === typeof base && value < base){
-            return 'base is greater than value';
+            return false;
         };
     };
     
@@ -33,7 +33,13 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(value){
+        if (typeof base === typeof value && base > value){
+            return true;
+        } else if (typeof base === typeof value && base < value){
+            return false;
+        };
+    }
     
     
     
@@ -47,7 +53,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function(String){
+        if (String[0].toUpperCase() === startsWith.toUpperCase()){
+            return true;
+        } else {
+            return false;
+        };
+    };
     
     
     

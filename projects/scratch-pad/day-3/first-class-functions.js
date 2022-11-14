@@ -73,9 +73,13 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    return function(String){
+        if (String[String.length - 1].toUpperCase() === endsWith.toUpperCase()){
+          return true;
+        } else {
+          return false;
+        };
+      };  
     
     // YOUR CODE ABOVE HERE //
 }
@@ -89,8 +93,13 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
+    var newArray = [];
+    for (var string in strings){
+        var newString = modify(strings[string]);
+        newArray.push(newString);
+    } 
+    return newArray;
+
     
     
     // YOUR CODE ABOVE HERE //
@@ -107,8 +116,18 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    var newArr = [];
+    for (var string in strings){
+        newArr.push(test(strings[string]));
+    } 
+    function isTrue(bool){
+        if (bool === true){
+            return true;
+        } else {
+            return false;
+        };
+    };
+    return newArr.every(isTrue);
     
     
     // YOUR CODE ABOVE HERE //

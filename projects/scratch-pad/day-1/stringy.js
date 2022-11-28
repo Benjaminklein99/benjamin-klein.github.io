@@ -60,7 +60,7 @@ function toDashCase(string) {
     // Starting by initializing a variable called new string and setting it equal to the lower case version of the input string
     var newString = string.toLowerCase();
     // Changeing spaces to dashes
-    var answer = newString.replace(' ', '-');
+    var answer = newString.replaceAll(' ', '-');
     // Returning new string
     return answer;
 

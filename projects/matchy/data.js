@@ -103,6 +103,11 @@ function getRandom(arr){
   return Math.floor(Math.random() * max);
 }
 
+friends.push(animals[getRandom(animals)].name);
+
+console.log(friends);
+
+animals[0]['friends'] = friends;
 
 
 

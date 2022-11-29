@@ -109,7 +109,7 @@ function typeOf(value) {
         return 'number';
     } else if (typeof value === 'boolean'){
         return 'boolean';
-    } else if ( value === null){
+    } else if (value === null){
         return 'null';
     } else if (typeof value === 'function'){
         return 'function';

@@ -49,7 +49,7 @@ As we code, save and refresh the browser tab running Matchy. Your work will begi
  8. [ ] It should be something like: 
 ~~~JS
 { species: 'duck', name: 'Jennifer', noises: [] }
-~~~
+~~~ 
 
 ## Step 2 - Array Creation
  1. [ ] Create a variable named `noises` and assign it to an empty array.

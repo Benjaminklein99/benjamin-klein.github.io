@@ -94,8 +94,14 @@ _.typeOf = function(value){
 */
 
 _.first = function(array, num){
-    if (!Array.isArray(array)){
+    if (!Array.isArray(array) || num < 0){
         return [];
+    } else if (typeof num !== 'number' || num === undefined){
+        return array[0];
+    } else if (num > array.length){
+        return array;
+    } else {
+        return array.slice(0, num);
     }
 }
 
@@ -118,6 +124,18 @@ _.first = function(array, num){
 */
 
 
+_.last = function(array, num){
+    if (!Array.isArray(array) || num < 0){
+        return [];
+    } else if (typeof num !== 'number' || num === undefined){
+        return array[array.length - 1];
+    } else if (num > array.length){
+        return array;
+    } else {
+        return array.slice(array.length - num, array.length);
+    }
+}
+
 /** _.indexOf
 * Arguments:
 *   1) An array
@@ -134,6 +152,15 @@ _.first = function(array, num){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value){
+    for (let i = 0; i < array.length; i++){
+        if (array[i] === value){
+            return i;
+        }
+    }
+    return -1
+}
+
 
 /** _.contains
 * Arguments:
@@ -149,6 +176,16 @@ _.first = function(array, num){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+
+_.contains = function(array, value){
+    for (let i = 0; i < array.length; i++){
+        if (array[i] === value){
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 /** _.each
@@ -197,6 +234,16 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (array){
+    let outputArray = [];
+    for (let i = 0; i < array.length; i++){
+        if (_.indexOf(outputArray, array[i]) === -1){
+            outputArray.push(array[_.indexOf(array, array[i])])
+        }
+    }
+    return outputArray;
+}
+
 
 /** _.filter
 * Arguments:
@@ -214,6 +261,17 @@ _.each = function(collection, func){
 *   use _.each in your implementation
 */
 
+_.filter = function(arr, func){
+    let outp = [];
+    for (let i = 0; i < arr.length; i++){
+        if (func(arr[i], i, arr) === true){
+            outp.push(arr[i]);
+        }
+    }
+    return outp;
+}
+
+
 
 /** _.reject
 * Arguments:
@@ -227,6 +285,16 @@ _.each = function(collection, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, func){
+    let outp = [];
+    for (let i = 0; i < array.length; i++){
+        if (func(array[i], i, array) === false){
+            outp.push(array[i]);
+        }
+    }
+    return outp;
+}
 
 
 /** _.partition
@@ -247,6 +315,21 @@ _.each = function(collection, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+
+_.partition = function(array, func){
+    let output = [];
+    let outputOne = [];
+    let outputTwo = [];
+    for (let i = 0; i < array.length; i++){
+        if (func(array[i], i, array) === false){
+            outputOne.push(array[i]);
+        } else {
+            outputTwo.push(array[i]);
+        }
+    }
+    output.push(outputTwo, outputOne);
+    return output;
+}
 
 
 /** _.map
@@ -298,6 +381,31 @@ _.each = function(collection, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+
+_.every = function(collection, test){
+    // determine if collection is array
+    if(Array.isArray(collection)){
+        // determine if test has not recieved a value
+        if (test === undefined){
+            for (let i = 0; i < collection.length; i++){
+                if (!array[i]){ //determine if array[i] is NOT truthy
+                    return false;
+                }
+            }
+        } else {
+
+        }
+    } else { // else its an object
+        // determine if test has not recieved a value
+        if (test === undefined){
+
+        } else {
+
+        }
+    }
+    return true;
+}
+
 
 
 /** _.some

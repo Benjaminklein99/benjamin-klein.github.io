@@ -31,9 +31,11 @@ function keysToString(object) {
 function valuesToString(object) {
     let output = '';
     for (var key in object){
-        output = output + object[key] + ' ';
+        if (typeof object[key] === 'string'){
+            output = output + object[key] + ' ';
+        }
     }
-    var result = output.slice(0, -1);
+    let result = output.trimEnd();
     return result;
 }
 
@@ -143,19 +145,7 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-    var testNames = [];
-    var outp = [];
-    for (var object in array){
-        if (array[object].name !== name){
-            testNames.push(array[object].name);
-        } 
-    } 
-    for (let i = 0; i <= testNames.length; i++){
-        if (!testNames[i].friends.includes(name)){
-            outp.push(name);
-        }
-    }
-   return outp;
+
 }
 
 //////////////////////////////////////////////////////////////////////

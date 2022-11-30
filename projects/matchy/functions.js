@@ -53,8 +53,15 @@ function remove(animals, name){
 //////////////////////////////////////////////////////////////////////
 
 function add(animals, animal){
+    var bf = true
     if (animal.name.length > 0 && animal.species.length > 0){
-        
+        for (let i = 0; i < animals.length; i++){
+            if (animal.name === animals[i].name){
+                bf = false;
+            }
+        }
+    } if (bf){
+        animals.push(animal);
     }
 }
 

@@ -145,7 +145,23 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    let testName = [];
+    let output = [];
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name !== name){
+            testName.push(array[i].name);
+        }
+    }
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name === name){
+            for (let x = 0; x < testName.length; x++){
+                if (array[i].friends.indexOf(testName[x]) === -1){
+                    output.push(testName[x]);
+                }
+            }
+        }
+    }
+    return output;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -153,7 +169,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-    return object[key] = value;
+    object[key] = value;
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////

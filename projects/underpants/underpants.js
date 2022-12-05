@@ -67,7 +67,7 @@ _.typeOf = function(value){
     } else if (value instanceof Date === true){
         return 'date';
     };
-    
+
     
 }
 
@@ -348,6 +348,20 @@ _.partition = function(array, func){
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func){
+    let result = []
+    if (Array.isArray(collection)){
+        for (let i = 0; i < collection.length; i++){
+            result.push(func(collection[i], i, collection));
+        }
+    } else {
+        for (let key in collection){
+            result.push(func(collection[key], key, collection));
+        }
+    }
+    return result;
+}
+
 
 /** _.pluck
 * Arguments:
@@ -359,6 +373,14 @@ _.partition = function(array, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(array, prop){
+    let result = [];
+    for (let i = 0; i < array.length; i++){
+        result.push(array[i][prop])
+    }
+    return result;
+}
 
 
 /** _.every
@@ -388,19 +410,32 @@ _.every = function(collection, test){
         // determine if test has not recieved a value
         if (test === undefined){
             for (let i = 0; i < collection.length; i++){
-                if (!array[i]){ //determine if array[i] is NOT truthy
+                if (!collection[i]){ //determine if array[i] is NOT truthy
                     return false;
                 }
             }
         } else {
+            for (let i = 0; i < collection.length; i++){
+                if (test(collection[i], i, collection) === false){
+                    return false;
+                }
+            }
 
         }
     } else { // else its an object
         // determine if test has not recieved a value
         if (test === undefined){
-
+            for (let key in collection){
+                if (!collection[key]){
+                    return false;
+                }
+            }
         } else {
-
+            for (let key in collection){
+                if(test(collection[key], key, collection) === false){
+                    return false;
+                }
+            }
         }
     }
     return true;
@@ -429,6 +464,42 @@ _.every = function(collection, test){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    // determine if collection is array
+    if(Array.isArray(collection)){
+        // determine if test has not recieved a value
+        if (test === undefined){
+            for (let i = 0; i < collection.length; i++){
+                if (collection[i]){ //determine if array[i] is truthy
+                    return true;
+                }
+            }
+        } else {
+            for (let i = 0; i < collection.length; i++){
+                if (test(collection[i], i, collection) === true){
+                    return true;
+                }
+            }
+
+        }
+    } else { // else its an object
+        // determine if test has not recieved a value
+        if (test === undefined){
+            for (let key in collection){
+                if (collection[key]){
+                    return true;
+                }
+            }
+        } else {
+            for (let key in collection){
+                if(test(collection[key], key, collection) === true){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
 
 /** _.reduce
 * Arguments:
@@ -449,6 +520,24 @@ _.every = function(collection, test){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed){
+    // create result variable
+    let result;
+    // determine if seed did not recieve a value
+    if (seed === undefined){
+        result = array[0];
+        for (let i = 1; i < array.length; i++){
+            result = func(result, array[i], i, array);
+        }
+    } else { // else it did
+        result = seed;
+        for (let i = 0; i < array.length; i++){
+            result = func(result, array[i], i, array);
+        }
+    }
+    return result;
+}
+
 
 /** _.extend
 * Arguments:
@@ -464,6 +553,11 @@ _.every = function(collection, test){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(...args){
+
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

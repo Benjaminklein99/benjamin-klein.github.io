@@ -34,16 +34,27 @@ function reverseArrayInPlace() {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
-
+function arrayToList(array){
+  let rest = null;
+  for (let i = array.length - 1; i >= 0; i--){
+    rest = {value: array[i], rest: rest};
+  }
+  return rest;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(list, output = []){
+  // base
+  if (list.rest === null){
+    output.push(list.value);
+    return output;
+  }
+  // recursion
+  output.push(list.value);
+  return listToArray(list.rest, output);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,8 +77,29 @@ function nth() {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
-
+function deepEqual(x, y){
+  // determine if BOTH x and y and NOT OBJECTS
+  if (typeof x !== 'object' && typeof y !== 'object'){
+    return x === y;
+  } 
+  // determine if EITHER x or y is not an object
+  if (typeof x !== 'object' || typeof y !== 'object'){
+    return false;
+  }
+  // create arrays of each items keys
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
+  // determine if xKeys and yKeys have different lengths
+  if (xKeys.length !== yKeys.length){
+    return false;
+  }
+  // iterate throughxKeys array
+  for (let i = 0; i < xKeys.length; i++){
+    if (!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[yKeys[i]])){
+      return false;
+    }
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

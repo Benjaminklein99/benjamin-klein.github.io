@@ -492,7 +492,7 @@ _.some = function(collection, func){
             }
         } else {
             for (let key in collection){
-                if(test(collection[key], key, collection) === true){
+                if(test(collection.key, key, collection) === true){
                     return true;
                 }
             }

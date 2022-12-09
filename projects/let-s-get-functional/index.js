@@ -124,9 +124,34 @@ var topThreeTags = function(arr){
         }
     }
     // determine what key in count obj has the highest value;
+    let stor2 = [];
+    for (let key in countObj){
+        stor2.push([key, countObj[key]]);
+    }
+    stor2.sort(function(a, b){
+      return b[1] - a[1];
+    })
+    let stor3 = stor2.slice(0, 3);
+    let stor4 = [];
+    for (let i = 0; i < stor3.length; i++){
+      stor4.push(stor3[i][0]);
+    }
+    return stor4;
 };
 
-var genderCount;
+var genderCount = function(array){
+    let countObj = {female: 0, male: 0, 'non-binary': 0};
+    _.reduce(array, function(accumulator, current){
+        if (current.gender === 'female'){
+            countObj.female += 1;
+        } else if (current.gender === 'male'){
+            countObj.male += 1;
+        } else if (current.gender === 'non-binary'){
+            countObj['non-binary'] += 1;
+        }
+    }, 0);
+    return countObj;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

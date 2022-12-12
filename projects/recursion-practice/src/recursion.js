@@ -99,7 +99,15 @@ var range = function(x, y, arr = []) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-
+  if (exp === 0){
+    return 1;
+  } else {
+    if (exp > 0){
+      return base * exponent(base, exp - 1);
+    } else if (exp < 0){
+      return (exponent(base, exp + 1))/base;
+    }
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -107,14 +115,41 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 1){
+    return true;
+  } else {
+    let result = n / 2;
+    if (result < 2){
+      return false;
+    } else if (result === 2){
+      return true;
+    } else {
+      return powerOfTwo(result);
+    }
+  }
 };
 
+
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, arr = []) {
+  if (string.length === 0){
+    return arr.join('');
+  };
+  arr.push(string[string.length - 1]);
+  return reverse(string.slice(0, -1), arr);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, arr = [], stor = string) {
+  if (string.length === 0){
+    if (arr.join('') == stor){
+      return true;
+    } else {
+      return false;
+    }
+  };
+  arr.push(string[string.length - 1]);
+  return palindrome(string.slice(0, -1), arr, stor);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the

@@ -2,7 +2,14 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
+function flatten(matrix) {
+  let result = [];
+  for (let i = 0; i < matrix.length; i++){
+    for (let x = 0; x < matrix[i].length; x++){
+      result.push(matrix[i][x]);
+    }
+  }
+  return result;
 
 }
 
@@ -10,23 +17,57 @@ function flatten() {
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+function loop(val, test, body, update) {
+  if (test(val)){
+    update(val);
+    return loop(body(val), test, body, update)
+  } else {
+    return;
+  }
 }
+
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(arr, test) {
+  for (let i = 0; i < arr.length; i++){
+    if (!test(arr[i])){
+      return false;
+    }
+  }
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(string) {
+  // create ltr and rtl arrays to keep track of characters
+  let ltr = [];
+  let rtl = [];
+
+  // iterate throught the input string
+  for (let i = 0; i < string.length; i++){
+    let script = characterScript(string.charCodeAt(i)); // { language }
+
+    if (script !== null){
+      // determine if direction is ltr
+      if (script.direction === 'ltr'){
+        ltr.push(script);
+      } else {
+        rtl.push(script);
+      }
+    }
+  }
+
+  if (ltr.length > rtl.length){
+    return 'ltr';
+  } else {
+    return 'rtl';
+  }
 
 }
 

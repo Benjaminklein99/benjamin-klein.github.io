@@ -464,7 +464,7 @@ _.every = function(collection, test){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
-_.some = function(collection, func){
+_.some = function(collection, test){
     // determine if collection is array
     if(Array.isArray(collection)){
         // determine if test has not recieved a value
@@ -492,7 +492,7 @@ _.some = function(collection, func){
             }
         } else {
             for (let key in collection){
-                if(test(collection.key, key, collection) === true){
+                if(test(collection[key], key, collection) === true){
                     return true;
                 }
             }
@@ -554,8 +554,9 @@ _.reduce = function(array, func, seed){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(...args){
-
+_.extend = function(target, ...args){
+    let result = Object.assign(target, ...args);
+    return result;
 }
 
 

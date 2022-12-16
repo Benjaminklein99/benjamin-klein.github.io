@@ -114,18 +114,16 @@ var exponent = function(base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function(n) {
-  if (n === 1){
+
+var powerOfTwo = function(n, x = 1) {
+  if (n === 0){
+    return false;
+  } else if (n === x){
     return true;
+  } else if (x * 2 > n){
+    return false;
   } else {
-    let result = n / 2;
-    if (result < 2){
-      return false;
-    } else if (result === 2){
-      return true;
-    } else {
-      return powerOfTwo(result);
-    }
+    return powerOfTwo(n, x *= 2);
   }
 };
 
@@ -140,16 +138,17 @@ var reverse = function(string, arr = []) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, arr = [], stor = string) {
-  if (string.length === 0){
-    if (arr.join('') == stor){
-      return true;
+var palindrome = function(string) {
+  let str = string.replace(/\s/g, '').toLowerCase();
+  if (str.length === 1 || str.length === 0){
+    return true;
+  } else {
+    if (str[0] === str[str.length - 1]){
+      return palindrome(str.slice(1, -1));
     } else {
       return false;
     }
-  };
-  arr.push(string[string.length - 1]);
-  return palindrome(string.slice(0, -1), arr, stor);
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -157,7 +156,11 @@ var palindrome = function(string, arr = [], stor = string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-var modulo = function(x, y) {
+var modulo = function(x, y, z = x) {
+  if (z < y) {
+    return z;
+  }
+  return modulo(x, y, z - y);
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
@@ -165,11 +168,28 @@ var modulo = function(x, y) {
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 // 2 + 2 + 2 + 2 = 0
 var multiply = function(x, y) {
+  if (y >= 0){
+    if (y === 0){
+      return 0;
+    } else {
+      return x + multiply(x, y - 1);
+    }
+  } else if (y <= 0){
+    if (y === 0){
+      return 0;
+    } else {
+      return -x + multiply(x, y + 1);
+    }
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+  if (y === 0){
+    return 0;
+  }
+  return x - divide(x, y - 1)
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two

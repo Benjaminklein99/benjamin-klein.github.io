@@ -17,11 +17,6 @@
  * 
  *      c. Const:  The const key word also creates a block scoped variable that will not be hoisted at run time.  Variable declared using the const keyword cannot be re-assigned.
  * 
- * 
- * 
- * 
- * 
- * 
  */
 
 // 1 // Declaration

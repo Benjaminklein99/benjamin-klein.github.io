@@ -206,32 +206,68 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (str1.length === 0 && str2.length === 0){
+    return true;
+  } else if (str1[0] !== str2[0]){
+    return false;
+  }
+  return compareStr(str1.slice(1), str2.slice(1));
+
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, arr = []){
+  if (str.length === 0){
+    return arr;
+  }
+  arr.push(str[0]);
+  return createArray(str.slice(1), arr);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, output = []) {
+  if (array.length === 0){
+    return output;
+  }
+  output.push(array[array.length - 1]);
+  return reverseArr(array.slice(0, -1), output);
+
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, arr = []) {
+  if (length === 0){
+    return arr;
+  }
+  arr.push(value);
+  return buildList(value, length -= 1, arr);
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, count = 0) {
+  if (array.length === 0){
+    return count;
+  }
+  if (array[0] === value){
+    count += 1;
+  }
+  return countOccurrence(array.slice(1), value, count);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, stor = []) {
+  if (array.length === 0){
+    return stor;
+  }
+  let res = callback(array[0]);
+  stor.push(res);
+  return rMap(array.slice(1), callback, stor);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -266,18 +302,29 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+var nthFibo = function(n, count = 0) {
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, output = []) {
+  if (input.length === 0){
+    return output;
+  }
+  output.push(input[0].toUpperCase());
+  return capitalizeWords(input.slice(1), output);
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(arr, output = []) {
+  if (arr.length === 0){
+    return output;
+  }
+  let capFirst = arr[0][0].toUpperCase() + arr[0].slice(1);
+  output.push(capFirst);
+  return capitalizeFirst(arr.slice(1), output);
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -332,7 +379,19 @@ var alternateSign = function(array) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+let obj = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'}
+
+var numToText = function(str, output = '', arr = str.split(' ')) {
+  if (arr.length === 0){
+    return output;
+  } else if (isNaN(arr[0]) && output.length === 0){
+    output += arr[0];
+  } else if (isNaN(arr[0]) && output.length > 0){
+    output += ' ' + arr[0]
+  } else if (!isNaN(arr[0])){
+    output += ' ' + obj[arr[0]];
+  }
+  return numToText(str, output, arr.slice(1))
 };
 
 // *** EXTRA CREDIT ***
